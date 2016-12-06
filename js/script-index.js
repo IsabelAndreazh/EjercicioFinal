@@ -1,17 +1,17 @@
 $(document).ready( function(){
+	$(".icon-arrow-left-alt").hide();
+
+	function printNews(){
+ 		 var noticia = $('#noticia');
+		 noticia.append("NUEVAS RECETAS");
+		 console.log(noticia);
+ 	}
+ 	printNews();
 
 	//La variable "recipesArray" esta declarada en el archivo "data/recipes.js"
 	renderHighlightedRecipes(recipesArray);
-		$(".icon-arrow-left-alt").hide();
-
-		function printNews(){
- 		 	var noticia = $('#noticia');
-		 	noticia.append("NUEVAS RECETAS");
-		 	console.log(noticia);
- 		}
- 		printNews();
+		
 });
-
 
 /*
 * Función que se encarga de pintar TODAS las recetas que tengan 
@@ -19,6 +19,13 @@ $(document).ready( function(){
 */
 function renderHighlightedRecipes(recipesArray) {
 	console.log('Recipes: ', recipesArray);
+
+	$(recipesArray).each(function(objeto){
+		if(recipesArray[objeto]["highlighted"] === true) {
+			renderRecipe(objeto);
+			console.log(objeto);
+		}
+	});
 }
 
 /*
